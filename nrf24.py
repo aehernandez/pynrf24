@@ -22,8 +22,8 @@
 
 #For BBBB
 import Adafruit_BBIO.GPIO as GPIO
+from Adafruit_BBIO.SPI import SPI
 
-import spidev
 import time
 import sys
 
@@ -364,8 +364,7 @@ class NRF24:
 
     def begin(self, major, minor, ce_pin, irq_pin):
         # Initialize SPI bus
-        self.spidev = spidev.SpiDev()
-        self.spidev.open(major, minor)
+        self.spidev = SPI(major, minor) 
         self.ce_pin = ce_pin
         self.irq_pin = irq_pin
 
